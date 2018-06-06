@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func fizzbuzz(size int) {
+func fizzbuzz(size int, number_clousure func(int) string) {
 	for i := 1; i <= size; i++ {
 		var word = ""
 		if i % 3 == 0 {
@@ -10,7 +10,7 @@ func fizzbuzz(size int) {
 		} else if i % 5 == 0 {
 			word += "Buzz"
 		} else {
-			word = fmt.Sprintf("%v",i)
+			word = number_clousure(i)
 		}
 		fmt.Println(word)
 		word = ""
@@ -18,5 +18,9 @@ func fizzbuzz(size int) {
 }
 
 func main() {
-	fizzbuzz(100)
+	number_word_clousure := func(number int) string {
+		return fmt.Sprintf("%v",number)
+	}
+
+	fizzbuzz(100, number_word_clousure)
 }
