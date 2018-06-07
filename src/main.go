@@ -2,8 +2,16 @@ package main
 
 import "fmt"
 
-// this is a comment
+func f(n int) {
+  for i := 0; i < 10; i++ {
+    fmt.Println(n, ":", i)
+  }
+}
 
 func main() {
-    fmt.Println("Hello World")
+  for i := 1; i <= 10; i++ {
+    go f(i)
+  }
+  var input string
+  fmt.Scanln(&input)
 }
